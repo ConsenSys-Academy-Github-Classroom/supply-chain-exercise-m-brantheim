@@ -3,7 +3,7 @@ pragma solidity >=0.5.16 <0.9.0;
 
 contract SupplyChain {
 
-  // <owner>
+  address public owner;
 
   // <skuCount>
 
@@ -66,7 +66,7 @@ contract SupplyChain {
   // modifier received(uint _sku) 
 
   constructor() public {
-    // 1. Set the owner to the transaction sender
+    owner = msg.sender;
     // 2. Initialize the sku count to 0. Question, is this necessary?
   }
 
