@@ -16,7 +16,14 @@ contract SupplyChain {
     Received
   }
 
-  // <struct Item: name, sku, price, state, seller, and buyer>
+  struct Item {
+    string name;
+    uint sku;
+    uint price;
+    State state;
+    address payable seller;
+    address payable buyer;
+  }
   
   /* 
    * Events

@@ -65,7 +65,7 @@ contract("SupplyChain", function (accounts) {
       });
     })
 
-    describe.skip("Item struct", () => {
+    describe("Item struct", () => {
       let subjectStruct;
 
       before(() => {
@@ -76,7 +76,7 @@ contract("SupplyChain", function (accounts) {
         );
       });
 
-      it.skip("should have a `name`", () => {
+      it("should have a `name`", () => {
         assert(
           isDefined(subjectStruct)("name"), 
           "Struct Item should have a `name` member"
@@ -87,7 +87,7 @@ contract("SupplyChain", function (accounts) {
         );
       });
 
-      it.skip("should have a `sku`", () => {
+      it("should have a `sku`", () => {
         assert(
           isDefined(subjectStruct)("sku"), 
           "Struct Item should have a `sku` member"
@@ -98,7 +98,7 @@ contract("SupplyChain", function (accounts) {
         );
       });
 
-      it.skip("should have a `price`", () => {
+      it("should have a `price`", () => {
         assert(
           isDefined(subjectStruct)("price"), 
           "Struct Item should have a `price` member"
@@ -109,7 +109,7 @@ contract("SupplyChain", function (accounts) {
         );
       });
 
-      it.skip("should have a `state`", () => {
+      it("should have a `state`", () => {
         assert(
           isDefined(subjectStruct)("state"), 
           "Struct Item should have a `state` member"
@@ -120,7 +120,7 @@ contract("SupplyChain", function (accounts) {
         );
       });
 
-      it.skip("should have a `seller`", () => {
+      it("should have a `seller`", () => {
         assert(
           isDefined(subjectStruct)("seller"), 
           "Struct Item should have a `seller` member"
@@ -135,7 +135,7 @@ contract("SupplyChain", function (accounts) {
         );
       });
 
-      it.skip("should have a `buyer`", () => {
+      it("should have a `buyer`", () => {
         assert(
           isDefined(subjectStruct)("buyer"), 
           "Struct Item should have a `buyer` member"
