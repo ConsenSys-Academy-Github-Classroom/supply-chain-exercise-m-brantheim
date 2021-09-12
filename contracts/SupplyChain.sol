@@ -5,7 +5,7 @@ contract SupplyChain {
 
   address public owner;
 
-  // <skuCount>
+  uint public skuCount;
 
   // <items mapping>
 
@@ -67,7 +67,6 @@ contract SupplyChain {
 
   constructor() public {
     owner = msg.sender;
-    // 2. Initialize the sku count to 0. Question, is this necessary?
   }
 
   function addItem(string memory _name, uint _price) public returns (bool) {

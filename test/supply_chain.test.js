@@ -22,7 +22,7 @@ contract("SupplyChain", function (accounts) {
       assert.equal(typeof instance.owner, 'function', "the contract has no owner");
     });
 
-    it.skip("should have an skuCount", async () => {
+    it("should have an skuCount", async () => {
       assert.equal(typeof instance.skuCount, 'function', "the contract has no skuCount");
     });
 
