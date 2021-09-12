@@ -26,7 +26,7 @@ contract("SupplyChain", function (accounts) {
       assert.equal(typeof instance.skuCount, 'function', "the contract has no skuCount");
     });
 
-    describe.skip("enum State", () => {
+    describe("enum State", () => {
       let enumState;
       before(() => {
         enumState = SupplyChain.enums.State;
@@ -36,28 +36,28 @@ contract("SupplyChain", function (accounts) {
         );
       });
 
-      it.skip("should define `ForSale`", () => {
+      it("should define `ForSale`", () => {
         assert(
           enumState.hasOwnProperty('ForSale'),
           "The enum does not have a `ForSale` value"
         );
       });
 
-      it.skip("should define `Sold`", () => {
+      it("should define `Sold`", () => {
         assert(
           enumState.hasOwnProperty('Sold'),
           "The enum does not have a `Sold` value"
         );
       });
 
-      it.skip("should define `Shipped`", () => {
+      it("should define `Shipped`", () => {
         assert(
           enumState.hasOwnProperty('Shipped'),
           "The enum does not have a `Shipped` value"
         );
       });
 
-      it.skip("should define `Received`", () => {
+      it("should define `Received`", () => {
         assert(
           enumState.hasOwnProperty('Received'),
           "The enum does not have a `Received` value"

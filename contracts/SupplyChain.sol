@@ -9,7 +9,12 @@ contract SupplyChain {
 
   // <items mapping>
 
-  // <enum State: ForSale, Sold, Shipped, Received>
+  enum State {
+    ForSale,
+    Sold,
+    Shipped,
+    Received
+  }
 
   // <struct Item: name, sku, price, state, seller, and buyer>
   
