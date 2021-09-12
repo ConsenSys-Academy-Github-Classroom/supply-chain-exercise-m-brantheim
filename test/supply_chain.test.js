@@ -153,7 +153,7 @@ contract("SupplyChain", function (accounts) {
   });
 
   describe("Use cases", () => {
-    it.skip("should add an item with the provided name and price", async () => {
+    it("should add an item with the provided name and price", async () => {
       await instance.addItem(name, price, { from: alice });
 
       const result = await instance.fetchItem.call(0);
