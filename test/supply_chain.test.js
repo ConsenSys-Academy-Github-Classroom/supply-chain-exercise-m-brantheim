@@ -185,7 +185,7 @@ contract("SupplyChain", function (accounts) {
       );
     });
 
-    it.skip("should emit a LogForSale event when an item is added", async () => {
+    it("should emit a LogForSale event when an item is added", async () => {
       let eventEmitted = false;
       const tx = await instance.addItem(name, price, { from: alice });
 
@@ -200,7 +200,7 @@ contract("SupplyChain", function (accounts) {
       );
     });
 
-    it.skip("should allow someone to purchase an item and update state accordingly", async () => {
+    it("should allow someone to purchase an item and update state accordingly", async () => {
       await instance.addItem(name, price, { from: alice });
       var aliceBalanceBefore = await web3.eth.getBalance(alice);
       var bobBalanceBefore = await web3.eth.getBalance(bob);
@@ -211,6 +211,8 @@ contract("SupplyChain", function (accounts) {
       var bobBalanceAfter = await web3.eth.getBalance(bob);
 
       const result = await instance.fetchItem.call(0);
+
+      console.log(result);
 
       assert.equal(
         result[3].toString(10),
