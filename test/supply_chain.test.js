@@ -239,12 +239,12 @@ contract("SupplyChain", function (accounts) {
       );
     });
 
-    it.skip("should error when not enough value is sent when purchasing an item", async () => {
+    it("should error when not enough value is sent when purchasing an item", async () => {
       await instance.addItem(name, price, { from: alice });
       await catchRevert(instance.buyItem(0, { from: bob, value: 1 }));
     });
 
-    it.skip("should emit LogSold event when and item is purchased", async () => {
+    it("should emit LogSold event when and item is purchased", async () => {
       var eventEmitted = false;
 
       await instance.addItem(name, price, { from: alice });
@@ -257,13 +257,13 @@ contract("SupplyChain", function (accounts) {
       assert.equal(eventEmitted, true, "adding an item should emit a Sold event");
     });
 
-    it.skip("should revert when someone that is not the seller tries to call shipItem()", async () => {
+    it("should revert when someone that is not the seller tries to call shipItem()", async () => {
       await instance.addItem(name, price, { from: alice });
       await instance.buyItem(0, { from: bob, value: price });
       await catchRevert(instance.shipItem(0, { from: bob }));
     });
 
-    it.skip("should allow the seller to mark the item as shipped", async () => {
+    it("should allow the seller to mark the item as shipped", async () => {
       await instance.addItem(name, price, { from: alice });
       await instance.buyItem(0, { from: bob, value: excessAmount });
       await instance.shipItem(0, { from: alice });
@@ -277,7 +277,7 @@ contract("SupplyChain", function (accounts) {
       );
     });
 
-    it.skip("should emit a LogShipped event when an item is shipped", async () => {
+    it("should emit a LogShipped event when an item is shipped", async () => {
       var eventEmitted = false;
 
       await instance.addItem(name, price, { from: alice });

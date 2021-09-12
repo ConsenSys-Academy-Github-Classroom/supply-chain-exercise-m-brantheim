@@ -33,7 +33,7 @@ contract SupplyChain {
 
   event LogSold(uint sku);
 
-  // <LogShipped event: sku arg>
+  event LogShipped(uint sku);
 
   // <LogReceived event: sku arg>
 
@@ -82,7 +82,20 @@ contract SupplyChain {
     require(isForSale && hasSeller);
     _;
   }
-  // modifier sold(uint _sku) 
+
+  modifier isSeller(uint _sku) {
+    Item storage item = items[_sku];
+    bool isSeller = item.seller == msg.sender;
+    require(isSeller);
+    _;
+  }
+
+  modifier sold(uint _sku) {
+    Item storage item = items[_sku];
+    bool isSold = item.state == State.Sold;
+    require(isSold);
+    _;
+  }
   // modifier shipped(uint _sku) 
   // modifier received(uint _sku) 
 
@@ -130,7 +143,10 @@ contract SupplyChain {
   //    - the person calling this function is the seller. 
   // 2. Change the state of the item to shipped. 
   // 3. call the event associated with this function!
-  function shipItem(uint sku) public {}
+  function shipItem(uint sku) public sold(sku) isSeller(sku) {
+    items[sku].state = State.Shipped;
+    emit LogShipped(sku);
+  }
 
   // 1. Add modifiers to check 
   //    - the item is shipped already 
