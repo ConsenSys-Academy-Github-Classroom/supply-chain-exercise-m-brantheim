@@ -212,8 +212,6 @@ contract("SupplyChain", function (accounts) {
 
       const result = await instance.fetchItem.call(0);
 
-      console.log(result);
-
       assert.equal(
         result[3].toString(10),
         SupplyChain.State.Sold,
@@ -295,7 +293,7 @@ contract("SupplyChain", function (accounts) {
       );
     });
 
-    it.skip("should allow the buyer to mark the item as received", async () => {
+    it("should allow the buyer to mark the item as received", async () => {
       await instance.addItem(name, price, { from: alice });
       await instance.buyItem(0, { from: bob, value: excessAmount });
       await instance.shipItem(0, { from: alice });
@@ -310,7 +308,7 @@ contract("SupplyChain", function (accounts) {
       );
     });
 
-    it.skip("should revert if an address other than the buyer calls receiveItem()", async () => {
+    it("should revert if an address other than the buyer calls receiveItem()", async () => {
       await instance.addItem(name, price, { from: alice });
       await instance.buyItem(0, { from: bob, value: excessAmount });
       await instance.shipItem(0, { from: alice });
@@ -318,7 +316,7 @@ contract("SupplyChain", function (accounts) {
       await catchRevert(instance.receiveItem(0, { from: alice }));
     });
 
-    it.skip("should emit a LogReceived event when an item is received", async () => {
+    it("should emit a LogReceived event when an item is received", async () => {
       var eventEmitted = false;
 
       await instance.addItem(name, price, { from: alice });

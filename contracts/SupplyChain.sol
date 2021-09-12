@@ -35,8 +35,7 @@ contract SupplyChain {
 
   event LogShipped(uint sku);
 
-  // <LogReceived event: sku arg>
-
+  event LogReceived(uint sku);
 
   /* 
    * Modifiers
@@ -96,7 +95,21 @@ contract SupplyChain {
     require(isSold);
     _;
   }
-  // modifier shipped(uint _sku) 
+
+  modifier isBuyer(uint _sku) {
+    Item storage item = items[_sku];
+    bool isBuyer = item.buyer == msg.sender;
+    require(isBuyer);
+    _;
+  }
+
+  modifier shipped(uint _sku) {
+    Item storage item = items[_sku];
+    bool isShipped = item.state == State.Shipped;
+    require(isShipped);
+    _;
+  }
+
   // modifier received(uint _sku) 
 
   constructor() public {
@@ -153,7 +166,10 @@ contract SupplyChain {
   //    - the person calling this function is the buyer. 
   // 2. Change the state of the item to received. 
   // 3. Call the event associated with this function!
-  function receiveItem(uint sku) public {}
+  function receiveItem(uint sku) public shipped(sku) isBuyer(sku) {
+    items[sku].state = State.Received;
+    emit LogReceived(sku);
+  }
 
   // Uncomment the following code block. it is needed to run tests
   function fetchItem(uint _sku) public view
